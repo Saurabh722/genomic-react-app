@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import msg from './../utility/messages';
 import * as services from './../services/services';
 
 function useCustomFetch(params) {
@@ -10,7 +11,15 @@ function useCustomFetch(params) {
   async function customeFetch(params) {
     try {
       const transcriptLinks = await services.getTranscriptLinks(params);
-      setList(transcriptLinks);
+      if (transcriptLinks) {
+        setList(transcriptLinks);
+
+        if (transcriptLinks.length === 0) {
+          setError(msg.noMatchFound);
+        }
+      } else {
+        setError(msg.somethingWentWrong);
+      }
       setLoading(false);
     } catch (e) {
       setError(e);

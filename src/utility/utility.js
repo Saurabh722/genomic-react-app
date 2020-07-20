@@ -16,3 +16,13 @@ export function transcriptLinkObject (id) {
         link: transcriptLinks(id)
     }
 }
+
+export function isValidSequence(res, params) {
+    const sequence = res.seq ? res.seq.toString() : false;
+
+    if (sequence && sequence.length >= params.proteinSequence) {
+        return sequence.charAt(params.proteinSequence - 1) === params.aminoAcidLetter.toUpperCase();
+    }
+
+    return false;
+}

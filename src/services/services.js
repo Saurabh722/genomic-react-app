@@ -19,22 +19,19 @@ export async function iterateAllTranscriptdata(transcripts, params) {
     }
 
     const filterData = promises.filter(res => {
-        const sequence = res.seq ? res.seq.toString() : false;
-
-        if (sequence && sequence.length >= params.proteinSequence) {
-            return sequence.charAt(params.proteinSequence - 1) === params.aminoAcidLetter;
-        }
-
-        return false;
+        return utility.isValidSequence(res, params);
     });
 
-    const data = filterData.map(item => utility.transcriptLinkObject(item.id));
-    return data;
+    if (filterData && Array.isArray(filterData)) {
+        return filterData.map(item => utility.transcriptLinkObject(item.id));
+    }
 }
 
 export async function getTranscriptLinks(params) {
     const response = await fetch(utility.getGeneSymbolURI(params.geneSymbol));
     const data = await response.json();
-    const transcript = data.Transcript.map(item => item.id);
-    return iterateAllTranscriptdata(transcript, params);
+    if (data && data.Transcript && Array.isArray(data.Transcript)) {
+        const transcript = data.Transcript.map(item => item.id);
+        return iterateAllTranscriptdata(transcript, params);
+    }
 }

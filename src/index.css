@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.center-align {
+  text-align: center;
+}
+
 .app-header {
   font-size: 20px;
   color: #eeeeee;
@@ -46,6 +50,24 @@ body {
   border: 1px solid #00BCD4;
 }
 
+.form-field {
+  margin-bottom: 20px;
+}
+
+.genomic-form .form-field input {
+  height: 30px;
+  padding: 5px;
+  min-width: 80%;
+}
+
+.validation-error {
+  position: absolute;
+  color: #ff0000;
+  padding-bottom: 5px;
+  font-size: 12px;
+  margin-top: -16px;
+}
+
 .loading-view {
   position: absolute;
   width: 100%;
@@ -56,13 +78,6 @@ body {
 .loading-view h2 {
   text-align: center;
   margin-top: 40%;
-}
-
-.genomic-form .form-field input {
-  height: 30px;
-  padding: 5px;
-  min-width: 80%;
-  margin-bottom: 15px;
 }
 
 .list-view {
@@ -99,4 +114,11 @@ body {
 
 .list-view .list-item:hover:before {
   color: #ffffff;
+}
+
+
+@media (max-width: 460px) {
+  .genomic-form {
+    margin: auto 10px;
+  }
 }

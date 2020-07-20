@@ -20,8 +20,8 @@ function App() {
 
   return (
     <div className="genomic">
-      {!state.showEnsemblLinkView && <GenomicFromView onSumitForm={setRequiredParams}/>}
-      {state.showEnsemblLinkView && <EnsemblLinkView queryParams={state.queryParams}/>}
+        {!state.showEnsemblLinkView && <GenomicFromView onSumitForm={setRequiredParams}/>}
+        {state.showEnsemblLinkView && <EnsemblLinkView queryParams={state.queryParams}/>}
     </div>
   );
 }

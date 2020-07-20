@@ -1,8 +1,10 @@
 import React from 'react';
 
+import ErrorBoundary from "./../error-boundary/ErrorBoundary";
 import Header from "./../header/Header";
 import Loading from "./../loading-view/Loading";
 import useCustomFetch from './../../hooks/useCustomFetch';
+import ListItem from "./ListItem";
 
 function EnsemblLinkView(props) {
   const [list, loading, error] = useCustomFetch(props.queryParams);
@@ -11,22 +13,25 @@ function EnsemblLinkView(props) {
     <div className="ensembl-link-view">
       <Header/>
       {loading && <Loading/>}
-      {!loading && list && (
+      {!loading && error && list && (
+        <h3 className="center-align">{error}.</h3>
+      )}
+      {!loading && !error && list && (
         <div>
             <ul className="list-view">
             {
               list.map((li, idx) => {
-                return <li key={idx} className="list-item">
-                    <a href={li.link} className="list-item-link">
-                      {li.id}
-                    </a>
-                  </li>
+                return <ErrorBoundary key={"error-boundary" + idx}>
+                    <ListItem key={idx} link={li.link} id={li.id}/>
+                  </ErrorBoundary>
               })
             }
             </ul>
         </div>
       )}
-      {error && <div>Error: {error}</div>}
+      {error && !list && <div>
+        <h3 className="center-align">Looks like some thing went wrong :(</h3>
+      </div>}
     </div>
   );
 }
