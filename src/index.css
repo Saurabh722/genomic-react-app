@@ -13,11 +13,19 @@ body {
 
 .app-header {
   font-size: 20px;
-  color: #eeeeee;
   text-align: center;
   padding: 5px;
   line-height: 30px;
   background: #333333;
+}
+
+.app-header a {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+.app-header a:hover {
+  color: #ffffff;
 }
 
 .back-to-home {

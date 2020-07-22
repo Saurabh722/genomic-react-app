@@ -4,7 +4,7 @@ function Header (props) {
 
     return (
         <header className="app-header">
-            Genomic
+            <a href="/">Genomic</a>
         </header>
     );
 }
