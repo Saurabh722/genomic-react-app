@@ -7,7 +7,7 @@ function ListItem (props) {
 
     return (
         <li className="list-item">
-            <a href={props.link} className="list-item-link">
+            <a href={props.link} className="list-item-link" rel="noopener noreferrer" target="_blank">
             {props.id}
             </a>
         </li>

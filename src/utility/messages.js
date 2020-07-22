@@ -3,7 +3,7 @@ export default {
     noMatchFound: "Looks like no match found",
     validation: {
         geneSymbol: "Error: Please fill Gene Symbol",
-        proteinSequence: "Error: Please fill Protein Sequence",
+        proteinSequence: "Error: Protein Sequence should not be empty and > 0",
         aminoAcid: "Error: Please fill Amino Acid Letter"
     }
 }

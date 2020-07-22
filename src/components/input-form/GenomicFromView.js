@@ -44,7 +44,7 @@ function GenomicFromView (props) {
                     />
                 </div>
                 <div className="form-field">
-                    { !genomicData.proteinSequence && <span className="validation-error">{msg.validation.proteinSequence}</span> }
+                    { (!genomicData.proteinSequence || (parseInt(genomicData.proteinSequence) < 1)) && <span className="validation-error">{msg.validation.proteinSequence}</span> }
                     <input
                         id="proteinSequence"
                         type="number"
