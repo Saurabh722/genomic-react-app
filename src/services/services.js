@@ -13,18 +13,25 @@ export async function getDNASequence(id) {
 
 export async function iterateAllTranscriptdata(transcripts, params) {
     const promises = [];
+    let transcriptData = [];
 
     for (let id of transcripts) {
-        promises.push(await getDNASequence(id));
+        promises.push(getDNASequence(id));
     }
 
-    const filterData = promises.filter(res => {
-        return utility.isValidSequence(res, params);
+    await Promise.all(promises).then(function(dataArr) {
+        if (dataArr && Array.isArray(dataArr)) {
+            transcriptData = dataArr.filter(res => {
+                return utility.isValidSequence(res, params);
+            });
+
+            transcriptData = transcriptData.map(item => utility.transcriptLinkObject(item.id));
+        }
     });
 
-    if (filterData && Array.isArray(filterData)) {
-        return filterData.map(item => utility.transcriptLinkObject(item.id));
-    }
+    console.log(transcriptData);
+
+    return transcriptData
 }
 
 export async function getTranscriptLinks(params) {
