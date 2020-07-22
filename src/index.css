@@ -88,7 +88,8 @@ body {
 }
 
 .list-view .list-item {
-  padding: 10px;
+  display: flex;
+  padding: 0 10px;
   background: #b3e6fd;
   border: 1px solid #1671b9;
   border-bottom: 0;
@@ -96,12 +97,14 @@ body {
 
 .list-view .list-item:before {
   content: "\27A7";
-  padding-right: 10px;
+  padding: 10px 10px 10px 0;
 }
 
 .list-view .list-item-link {
   color: #402e2e;
   text-decoration: none;
+  padding: 10px 0;
+  flex: 1;
 }
 
 .list-view .list-item:hover {
