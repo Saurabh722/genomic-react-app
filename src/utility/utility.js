@@ -10,6 +10,10 @@ export function transcriptLinks (id) {
     return `http://www.ensembl.org/id/${id}`;
 }
 
+/**
+ * @param {String} id - transcript Id.
+ * @returns {Object} contain transcript Id and transcriptLink.
+ */
 export function transcriptLinkObject (id) {
     return {
         id,
@@ -17,6 +21,12 @@ export function transcriptLinkObject (id) {
     }
 }
 
+/**
+ * Validate matching Amino Acid Letter with DNA sequence string.
+ * @param {Object} res - contain DNA sequence string and other details.
+ * @param {Object} params - contain proteinSequence(Number) and aminoAcidLetter(Char).
+ * @returns {Boolean} If matches return true.
+ */
 export function isValidSequence(res, params) {
     const sequence = res.seq ? res.seq.toString() : false;
 
