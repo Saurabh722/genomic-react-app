@@ -29,8 +29,6 @@ export async function iterateAllTranscriptdata(transcripts, params) {
         }
     });
 
-    console.log(transcriptData);
-
     return transcriptData
 }
 
